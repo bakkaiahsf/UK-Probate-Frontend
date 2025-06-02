@@ -6,6 +6,20 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  fetch(`${API_URL}/cases/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: "test@example.com",
+      name: "Test User"
+    })
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('There was a problem with the fetch operation:', error));
+
   return (
     <>
       <div>
