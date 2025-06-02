@@ -3,23 +3,18 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 function App() {
   const [count, setCount] = useState(0)
-
-  fetch(`${API_URL}/cases/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      email: "test@example.com",
-      name: "Test User"
-    })
-  })
+  fetch(`${import.meta.env.VITE_API_URL}/cases/register`)
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error('There was a problem with the fetch operation:', error));
-
+    
+  
+   
   return (
     <>
       <div>
